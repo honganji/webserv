@@ -6,14 +6,14 @@
 /*   By: ytoshihi <ytoshihi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:01:40 by ytoshihi          #+#    #+#             */
-/*   Updated: 2024/09/03 14:09:20 by ytoshihi         ###   ########.fr       */
+/*   Updated: 2024/09/09 21:00:36 by ytoshihi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "../includes/Request.hpp"
 
 int	main(void)
 {
-	std::cout << "Welcome to webserv!" << std::endl;
+	Request request("default.txt");
 	return (0);
 }
