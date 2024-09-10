@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include <any>
+#include <regex>
 
 class Request
 {
@@ -18,8 +19,22 @@ class Request
 	struct routeSetting
 	{
 		std::vector<Method> method;
+		std::string redPath;
+		std::string rootPath;
+		bool isListingOn;
+		std::string defaultFile;
+		std::vector<std::string> cgiExtensions;
+		std::vector<std::string> cgiPaths;
 
-		routeSetting(std::vector<Method> m) : method(m) {};
+		routeSetting() :
+		method({}),
+		redPath(""),
+		rootPath(""),
+		isListingOn(false),
+		defaultFile(""),
+		cgiExtensions({}),
+		cgiPaths({})
+		{};
 	};
 
 	private:
@@ -30,9 +45,13 @@ class Request
 		unsigned int _bodySize;
 		std::map<std::string, routeSetting> _routes;
 		std::map<std::string, std::function<void(const std::string &)>> _setterMap;
+		std::map<std::string, std::function<void(const std::string &, routeSetting &rs)>> _routeSetterMap;
 		void _setRoutes(std::map<std::string, routeSetting> routes);
 		std::string _readStr(const std::string &line);
-		void _checkCurlyBrace(const std::string &line);
+		bool _checkCurlyBrace(const std::string &line);
+		void _updateValues(std::istringstream &contentStream);
+		void _updateRouteMap(const std::string &path, std::istringstream &contentStream);
+		std::string _eraseChar(const std::string &str, char c);
 		bool _parseConfig(const std::string &content);
 		Request(void);
 
