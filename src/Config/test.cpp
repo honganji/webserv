@@ -8,7 +8,10 @@ void Config::test(void)
 	std::cout << "port: " << getPort() << std::endl;
 	std::cout << "host: " << getHost() << std::endl;
 	std::cout << "server name: " << getServerName() << std::endl;
-	std::cout << "err page: " << getErrPage() << std::endl;
+	std::cout << "err page: " << std::endl;
+	for (auto const &pair: _errPage)
+		std::cout << " " << pair.first << ": " << pair.second << std::endl;
+
 	std::cout << "body size: " << getBodySize() << std::endl;
 	std::cout << "routes info:" << std::endl;
 	std::cout << "\e[33m===============================\e[0m" << std::endl;

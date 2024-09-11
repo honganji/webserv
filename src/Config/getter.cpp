@@ -15,7 +15,7 @@ const std::string Config::getServerName(void) const
 	return (_serverName);
 }
 
-const std::string Config::getErrPage(void) const
+const std::map<unsigned int, std::string> Config::getErrPage(void) const
 {
 	return (_errPage);
 }

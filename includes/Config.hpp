@@ -41,7 +41,7 @@ class Config
 		int _port;
 		std::string _host;
 		std::string _serverName;
-		std::string _errPage;
+		std::map<unsigned int, std::string> _errPage;
 		unsigned int _bodySize;
 		std::map<std::string, routeSetting> _routes;
 		std::map<std::string, std::function<void(const std::string &)>> _setterMap;
@@ -60,6 +60,7 @@ class Config
 		void _indexFn(const std::string &str, routeSetting &rs);
 		void _cgiExtFn(const std::string &str, routeSetting &rs);
 		void _cgiPathFn(const std::string &str, routeSetting &rs);
+		void _errPageFn(const std::string &str);
 		Config(void);
 
 	public:
@@ -70,7 +71,7 @@ class Config
 		unsigned int getPort(void) const;
 		const std::string getHost(void) const;
 		const std::string getServerName(void) const;
-		const std::string getErrPage(void) const;
+		const std::map<unsigned int, std::string> getErrPage(void) const;
 		unsigned int getBodySize(void) const;
 		const std::map<std::string, routeSetting> getRoutes(void) const;
 		void test(void);

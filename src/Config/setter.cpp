@@ -1,5 +1,17 @@
 #include "../../includes/Config.hpp"
 
+// basic setting
+void Config::_errPageFn(const std::string &str)
+{
+	std::istringstream lineStream(str);
+	std::string firstStr;
+	std::string secondStr;
+	lineStream >> firstStr;
+	getline(lineStream, secondStr);
+	_errPage[std::stoul(firstStr)] = secondStr;
+}
+
+// route setting
 void Config::_allowMethFn(const std::string &str, routeSetting &rs)
 {
 	std::map<std::string, Method> methodMap = {

@@ -4,7 +4,7 @@ Config::Config(const std::string &fileName) :
 _port(1),
 _host("default_host"),
 _serverName("default_name"),
-_errPage("default_path"),
+_errPage({}),
 _bodySize(0),
 _routes({})
 {
@@ -12,7 +12,7 @@ _routes({})
 	_setterMap["listen"] = [this](const std::string &value) {_port = std::stoi(_trimSpace(value));};
 	_setterMap["host"] = [this](const std::string &value) {_host = _trimSpace(value);};
 	_setterMap["server_name"] = [this](const std::string &value) {_serverName = _trimSpace(value);};
-	_setterMap["error_page"] = [this](const std::string &value) {_errPage = _trimSpace(value);};
+	_setterMap["error_page"] = [this](const std::string &value) { _errPageFn(_trimSpace(value)); };
 	_setterMap["client_max_body_size"] = [this](const std::string &value) {_bodySize = std::stoul(_trimSpace(value));};
 
 	// initialize route setter map
