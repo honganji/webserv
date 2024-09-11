@@ -63,7 +63,7 @@ void Config::_updateValues(std::istringstream &contentStream)
 {
 	std::string line;
 
-	while (std::getline(contentStream, line))
+	while (std::getline(contentStream, line) && !_checkLastChar(line, '}'))
 	{
 		std::istringstream lineStream(line);
 		std::string propKey;
@@ -87,6 +87,7 @@ void Config::_updateValues(std::istringstream &contentStream)
 			_updateRouteMap(propValue, contentStream);
 		}
 	}
+	std::cout << line << std::endl;
 }
 
 std::string Config::_trimSpace(const std::string &str)
