@@ -69,6 +69,7 @@ class Config
 		~Config(void);
 		unsigned int getPort(void) const;
 		const std::string getHost(void) const;
+		const std::string getServerName(void) const;
 		const std::string getErrPage(void) const;
 		unsigned int getBodySize(void) const;
 		const std::map<std::string, routeSetting> getRoutes(void) const;

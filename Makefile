@@ -1,7 +1,7 @@
 NAME := webserv
 
 SRC_DIR := src
-CLASSES_DIR := $(SRC_DIR)/classes
+CONFIG_DIR := $(SRC_DIR)/Config
 HEADER_DIR := includes
 OBJ_DIR := objs
 OBJS_DIR := $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SRC_DIR))
@@ -9,7 +9,8 @@ OBJS_DIR := $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SRC_DIR))
 HEADERS := $(addprefix $(HEADER_DIR)/, Config.hpp)
 
 SOURCE := $(addprefix $(SRC_DIR)/, main.cpp) \
-		  $(addprefix $(CLASSES_DIR)/, Config.cpp)
+		  $(addprefix $(CONFIG_DIR)/, setter.cpp parsing.cpp getter.cpp test.cpp \
+			 Config.cpp)
 
 OBJS := $(SOURCE:%.cpp=$(OBJ_DIR)/%.o)
 
