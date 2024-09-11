@@ -7,7 +7,7 @@
 #include <any>
 #include <regex>
 
-class Request
+class Config
 {
 	enum Method
 	{
@@ -48,21 +48,29 @@ class Request
 		std::map<std::string, std::function<void(const std::string &, routeSetting &rs)>> _routeSetterMap;
 		void _setRoutes(std::map<std::string, routeSetting> routes);
 		std::string _readStr(const std::string &line);
-		bool _checkCurlyBrace(const std::string &line);
-		void _updateValues(std::istringstream &contentStream);
+		bool _checkLastChar(const std::string &line, char c);
 		void _updateRouteMap(const std::string &path, std::istringstream &contentStream);
-		std::string _eraseChar(const std::string &str, char c);
+		void _updateValues(std::istringstream &contentStream);
+		std::string _trimSpace(const std::string &str);
 		bool _parseConfig(const std::string &content);
-		Request(void);
+		void _allowMethFn(const std::string &str, routeSetting &rs);
+		void _returnFn(const std::string &str, routeSetting &rs);
+		void _rootFn(const std::string &str, routeSetting &rs);
+		void _autoIndexFn(const std::string &str, routeSetting &rs);
+		void _indexFn(const std::string &str, routeSetting &rs);
+		void _cgiExtFn(const std::string &str, routeSetting &rs);
+		void _cgiPathFn(const std::string &str, routeSetting &rs);
+		Config(void);
 
 	public:
-		Request(const std::string &fileName);
-		Request(const Request &ref);
-		Request &operator=(const Request &ref);
-		~Request(void);
+		Config(const std::string &fileName);
+		Config(const Config &ref);
+		Config &operator=(const Config &ref);
+		~Config(void);
 		unsigned int getPort(void) const;
 		const std::string getHost(void) const;
 		const std::string getErrPage(void) const;
 		unsigned int getBodySize(void) const;
 		const std::map<std::string, routeSetting> getRoutes(void) const;
+		void test(void);
 };

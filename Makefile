@@ -6,10 +6,10 @@ HEADER_DIR := includes
 OBJ_DIR := objs
 OBJS_DIR := $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SRC_DIR))
 
-HEADERS := $(addprefix $(HEADER_DIR)/, Request.hpp)
+HEADERS := $(addprefix $(HEADER_DIR)/, Config.hpp)
 
 SOURCE := $(addprefix $(SRC_DIR)/, main.cpp) \
-		  $(addprefix $(CLASSES_DIR)/, Request.cpp)
+		  $(addprefix $(CLASSES_DIR)/, Config.cpp)
 
 OBJS := $(SOURCE:%.cpp=$(OBJ_DIR)/%.o)
 
